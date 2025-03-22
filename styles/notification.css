@@ -1,0 +1,82 @@
+.xp-notification {
+  position: fixed;
+  width: 300px;
+  background: linear-gradient(to bottom, #1084d0 0%, #0c5a9e 100%);
+  border: 2px solid #003c74;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: "Tahoma", sans-serif;
+  font-size: 12px;
+  z-index: 9999;
+  animation: slideIn 0.5s forwards;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .xp-notification {
+    width: 100%;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    border-radius: 0;
+  }
+}
+
+.xp-notification-title {
+  padding: 6px 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.xp-notification-close {
+  width: 16px;
+  height: 16px;
+  background-color: #ff5050;
+  border: 1px solid #cc0000;
+  border-radius: 2px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.xp-notification-body {
+  padding: 10px;
+  background-color: #ece9d8;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.xp-notification-icon {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.xp-notification-message {
+  flex-grow: 1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
