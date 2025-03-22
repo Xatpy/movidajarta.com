@@ -115,6 +115,10 @@ const clickSound = new Audio();
 clickSound.src = "./sounds/sergius.mp3"; // Adjust the path to your sound file
 clickSound.preload = "auto";
 
+const emojiClickSound = new Audio();
+emojiClickSound.src = "./sounds/notificatin.mp3"; // Change this to your emoji sound file
+emojiClickSound.preload = "auto";
+
 document.addEventListener("click", (e) => {
   // Play click sound
   clickSound.currentTime = 0; // Reset sound to beginning
@@ -130,6 +134,26 @@ document.addEventListener("click", (e) => {
   clickEmoji.style.transform = "translate(-50%, -50%)";
   clickEmoji.style.animation = "none";
   clickEmoji.style.zIndex = "4";
+
+  emoji.addEventListener("click", (e) => {
+    // Stop the event from propagating to document click handler
+    e.stopPropagation();
+
+    // Play the emoji-specific sound
+    emojiClickSound.currentTime = 0;
+    emojiClickSound
+      .play()
+      .catch((e) => console.log("Emoji audio playback failed:", e));
+
+    emoji.style.transform = "scale(2)";
+    emoji.style.opacity = "0.8";
+
+    setTimeout(() => {
+      emoji.style.transform = "scale(1)";
+      emoji.style.opacity = "1";
+    }, 300);
+  });
+
   document.body.appendChild(clickEmoji);
 
   setTimeout(() => {
